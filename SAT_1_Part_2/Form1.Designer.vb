@@ -28,6 +28,8 @@ Partial Class Form1
         Me.chkSpeci2 = New System.Windows.Forms.CheckBox()
         Me.txtInput = New System.Windows.Forms.TextBox()
         Me.lblInput = New System.Windows.Forms.Label()
+        Me.btnScaling = New System.Windows.Forms.Button()
+        Me.btnProcessing = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -100,6 +102,28 @@ Partial Class Form1
         Me.lblInput.TabIndex = 6
         Me.lblInput.Text = "Input Number Set"
         '
+        'btnScaling
+        '
+        Me.btnScaling.ForeColor = System.Drawing.Color.DimGray
+        Me.btnScaling.Location = New System.Drawing.Point(578, 586)
+        Me.btnScaling.Name = "btnScaling"
+        Me.btnScaling.Size = New System.Drawing.Size(153, 34)
+        Me.btnScaling.TabIndex = 7
+        Me.btnScaling.Tag = ""
+        Me.btnScaling.Text = "SCALING"
+        Me.btnScaling.UseVisualStyleBackColor = True
+        '
+        'btnProcessing
+        '
+        Me.btnProcessing.ForeColor = System.Drawing.Color.DimGray
+        Me.btnProcessing.Location = New System.Drawing.Point(792, 586)
+        Me.btnProcessing.Name = "btnProcessing"
+        Me.btnProcessing.Size = New System.Drawing.Size(153, 34)
+        Me.btnProcessing.TabIndex = 8
+        Me.btnProcessing.Tag = ""
+        Me.btnProcessing.Text = "PROCESSING"
+        Me.btnProcessing.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 13.0!)
@@ -107,6 +131,8 @@ Partial Class Form1
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1549, 675)
+        Me.Controls.Add(Me.btnProcessing)
+        Me.Controls.Add(Me.btnScaling)
         Me.Controls.Add(Me.lblInput)
         Me.Controls.Add(Me.txtInput)
         Me.Controls.Add(Me.chkSpeci2)
@@ -130,4 +156,6 @@ Partial Class Form1
     Friend WithEvents chkSpeci2 As CheckBox
     Friend WithEvents txtInput As TextBox
     Friend WithEvents lblInput As Label
+    Friend WithEvents btnScaling As Button
+    Friend WithEvents btnProcessing As Button
 End Class

@@ -95,6 +95,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Processing.Designer.vb">
+      <DependentUpon>Processing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Processing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scaling.Designer.vb">
+      <DependentUpon>Scaling.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Scaling.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -105,6 +117,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Processing.resx">
+      <DependentUpon>Processing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scaling.resx">
+      <DependentUpon>Scaling.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

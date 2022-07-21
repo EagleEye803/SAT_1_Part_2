@@ -14,12 +14,13 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'Save Input Data
+        ''Save Input Data
         Dim Total As Double = 0
         Dim Divisor As Integer = 0
         For Each Number In txtInput.Text.Split(",")
             'Type Check Number
             Try
+                'Add Numbers Together
                 Total += Number
                 Divisor += 1
             Catch ex As Exception
@@ -27,7 +28,21 @@
             End Try
         Next
         'Average Input Data
+        Dim Average As Double = Total / Divisor
+        'Retrieve Relative Path
+        Dim ProjectPath = Application.StartupPath.Split("/")
+        ProjectPath(ProjectPath.Length - 2 = "")
+        ProjectPath
+        MsgBox("Your average is: " & Average & vbNewLine & Join(ProjectPath, "/"))
+    End Sub
 
-        'Commit Processed Data to File
+    Private Sub btnScaling_Click(sender As Object, e As EventArgs) Handles btnScaling.Click
+        Me.Hide()
+        Scaling.Show()
+    End Sub
+
+    Private Sub btnProcessing_Click(sender As Object, e As EventArgs) Handles btnProcessing.Click
+        Me.Hide()
+        Processing.Show()
     End Sub
 End Class
