@@ -94,6 +94,7 @@ Partial Class Form1
         '
         'lblInput
         '
+        Me.lblInput.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.lblInput.AutoSize = True
         Me.lblInput.Font = New System.Drawing.Font("Verdana", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInput.Location = New System.Drawing.Point(671, 250)
@@ -104,6 +105,7 @@ Partial Class Form1
         '
         'btnScaling
         '
+        Me.btnScaling.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnScaling.ForeColor = System.Drawing.Color.DimGray
         Me.btnScaling.Location = New System.Drawing.Point(578, 586)
         Me.btnScaling.Name = "btnScaling"
@@ -115,6 +117,7 @@ Partial Class Form1
         '
         'btnProcessing
         '
+        Me.btnProcessing.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnProcessing.ForeColor = System.Drawing.Color.DimGray
         Me.btnProcessing.Location = New System.Drawing.Point(792, 586)
         Me.btnProcessing.Name = "btnProcessing"
