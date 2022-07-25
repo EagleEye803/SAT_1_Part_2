@@ -21,10 +21,49 @@
 
     Private Sub btnScale_Click(sender As Object, e As EventArgs) Handles btnScale.Click
         If Clicked = True Then
-            ''Save Input Data
-            Dim 
-        Else
+            Try
+                ''Save Input Data
 
+            Catch ex As Exception
+
+            End Try
+        Else
+            MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
         End If
     End Sub
+
+    Private Sub chkDirectFactor_Clicked(sender As Object, e As EventArgs) Handles chkDirectFactor.Click
+        ''Uncheck and Enable Other Checkbox, Check and Disable Self
+        chkAuto.Checked = False
+        chkAuto.Enabled = True
+        chkDirectFactor.Checked = True
+        chkDirectFactor.Enabled = False
+        nudMin.Enabled = True
+        nudMax.Enabled = True
+        ''Change Visuals
+        nudMin.ForeColor = Color.Black
+        nudMax.ForeColor = Color.Black
+        lblArrow.ForeColor = Color.LightSkyBlue
+        lblMin.ForeColor = Color.LightSkyBlue
+        lblMax.ForeColor = Color.LightSkyBlue
+    End Sub
+
+    Private Sub chkAuto_Clicked(sender As Object, e As EventArgs) Handles chkAuto.Click
+        ''Uncheck and Enable Other Checkbox, Disable Self
+        chkDirectFactor.Checked = False
+        chkDirectFactor.Enabled = True
+        chkAuto.Checked = True
+        chkAuto.Enabled = False
+        nudMin.Enabled = False
+        nudMax.Enabled = False
+        nudMin.Value = 0
+        nudMax.Value = 0
+        ''Change Visuals
+        nudMin.ForeColor = SystemColors.InactiveCaption
+        nudMax.ForeColor = SystemColors.InactiveCaption
+        lblArrow.ForeColor = SystemColors.InactiveCaption
+        lblMin.ForeColor = SystemColors.InactiveCaption
+        lblMax.ForeColor = SystemColors.InactiveCaption
+    End Sub
+
 End Class

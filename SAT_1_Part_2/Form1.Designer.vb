@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.chkSpeci1 = New System.Windows.Forms.CheckBox()
@@ -30,6 +31,7 @@ Partial Class Form1
         Me.lblInput = New System.Windows.Forms.Label()
         Me.btnScaling = New System.Windows.Forms.Button()
         Me.btnProcessing = New System.Windows.Forms.Button()
+        Me.tipAverage = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'lblTitle
@@ -54,6 +56,7 @@ Partial Class Form1
         Me.Button1.Size = New System.Drawing.Size(159, 93)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "AVERAGE"
+        Me.tipAverage.SetToolTip(Me.Button1, "Average Your Data!")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'chkSpeci1
@@ -91,6 +94,7 @@ Partial Class Form1
         Me.txtInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtInput.Size = New System.Drawing.Size(373, 263)
         Me.txtInput.TabIndex = 5
+        Me.tipAverage.SetToolTip(Me.txtInput, "Will Only Accept Numeric Values Separated by Commas, e.g. ""1, 2.34, 567""")
         '
         'lblInput
         '
@@ -113,6 +117,7 @@ Partial Class Form1
         Me.btnScaling.TabIndex = 7
         Me.btnScaling.Tag = ""
         Me.btnScaling.Text = "SCALING"
+        Me.tipAverage.SetToolTip(Me.btnScaling, "Navigate to Scaling Program")
         Me.btnScaling.UseVisualStyleBackColor = True
         '
         'btnProcessing
@@ -125,6 +130,7 @@ Partial Class Form1
         Me.btnProcessing.TabIndex = 8
         Me.btnProcessing.Tag = ""
         Me.btnProcessing.Text = "PROCESSING"
+        Me.tipAverage.SetToolTip(Me.btnProcessing, "Navigate to Processing Program")
         Me.btnProcessing.UseVisualStyleBackColor = True
         '
         'Form1
@@ -161,4 +167,5 @@ Partial Class Form1
     Friend WithEvents lblInput As Label
     Friend WithEvents btnScaling As Button
     Friend WithEvents btnProcessing As Button
+    Friend WithEvents tipAverage As ToolTip
 End Class

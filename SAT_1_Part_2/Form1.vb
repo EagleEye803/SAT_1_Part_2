@@ -38,7 +38,7 @@
             Dim ProjectFolderPath(UBound(ProjectPath) - 2)
             Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
             'Testing Line: MsgBox(Join(ProjectFolderPath, "\"), vbOK, "Testing Output!")
-            MsgBox("Your average is: " & Average)
+            MsgBox($"Your average is: {Average}")
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
         End If
