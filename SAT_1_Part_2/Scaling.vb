@@ -26,12 +26,19 @@
                 ''Determine Factor
                 If chkAuto.Checked Then
                     'Automatically Locate Maximum and Minimum
-                    Dim currentHighest = 0
+                    Dim currentHighest As Double = 0
                     Dim highestPossible = InputBox("What is the highest possible number to scale to?")
                     For Each Number In txtInput.Text.Split(",")
-
+                        If Number > currentHighest Then
+                            currentHighest = Number
+                        End If
                     Next
+                    Dim Factor = highestPossible / currentHighest
+                ElseIf chkDirectFactor.Checked Then
+                    Dim Factor = nudMax.Value / nudMin.Value
                 End If
+                ''Calculate Scaled Number Set
+
             Catch ex As Exception
                 MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
             End Try
