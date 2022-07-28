@@ -4,6 +4,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtInput.ForeColor = Color.LightGray
         txtInput.Text = "e.g. 12, 3.4, 567..."
+        chkAuto.ForeColor = Color.LightSkyBlue
     End Sub
 
     Private Sub txtInput_Click(sender As Object, e As EventArgs) Handles txtInput.Click
@@ -22,10 +23,17 @@
     Private Sub btnScale_Click(sender As Object, e As EventArgs) Handles btnScale.Click
         If Clicked = True Then
             Try
-                ''Save Input Data
+                ''Determine Factor
+                If chkAuto.Checked Then
+                    'Automatically Locate Maximum and Minimum
+                    Dim currentHighest = 0
+                    Dim highestPossible = InputBox("What is the highest possible number to scale to?")
+                    For Each Number In txtInput.Text.Split(",")
 
+                    Next
+                End If
             Catch ex As Exception
-
+                MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
             End Try
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
@@ -38,6 +46,7 @@
         chkAuto.Enabled = True
         chkDirectFactor.Checked = True
         chkDirectFactor.Enabled = False
+        chkDirectFactor.ForeColor = Color.LightSkyBlue
         nudMin.Enabled = True
         nudMax.Enabled = True
         ''Change Visuals
@@ -54,6 +63,7 @@
         chkDirectFactor.Enabled = True
         chkAuto.Checked = True
         chkAuto.Enabled = False
+        chkAuto.ForeColor = Color.LightSkyBlue
         nudMin.Enabled = False
         nudMax.Enabled = False
         nudMin.Value = 0

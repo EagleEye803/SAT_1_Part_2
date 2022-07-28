@@ -144,6 +144,7 @@ Partial Class Scaling
         Me.nudMin.Name = "nudMin"
         Me.nudMin.Size = New System.Drawing.Size(57, 20)
         Me.nudMin.TabIndex = 14
+        Me.tipScaling.SetToolTip(Me.nudMin, "Maximum Unscaled Value for Factor Calculation")
         '
         'nudMax
         '
@@ -155,6 +156,7 @@ Partial Class Scaling
         Me.nudMax.Name = "nudMax"
         Me.nudMax.Size = New System.Drawing.Size(57, 20)
         Me.nudMax.TabIndex = 15
+        Me.tipScaling.SetToolTip(Me.nudMax, "Maximum Possible Value for Factor Calculation")
         '
         'lblMin
         '
@@ -164,9 +166,9 @@ Partial Class Scaling
         Me.lblMin.ForeColor = System.Drawing.SystemColors.InactiveCaption
         Me.lblMin.Location = New System.Drawing.Point(836, 301)
         Me.lblMin.Name = "lblMin"
-        Me.lblMin.Size = New System.Drawing.Size(48, 13)
+        Me.lblMin.Size = New System.Drawing.Size(76, 13)
         Me.lblMin.TabIndex = 16
-        Me.lblMin.Text = "Minimum"
+        Me.lblMin.Text = "Maximum Raw"
         '
         'lblMax
         '
@@ -176,9 +178,9 @@ Partial Class Scaling
         Me.lblMax.ForeColor = System.Drawing.SystemColors.InactiveCaption
         Me.lblMax.Location = New System.Drawing.Point(964, 301)
         Me.lblMax.Name = "lblMax"
-        Me.lblMax.Size = New System.Drawing.Size(51, 13)
+        Me.lblMax.Size = New System.Drawing.Size(87, 13)
         Me.lblMax.TabIndex = 17
-        Me.lblMax.Text = "Maximum"
+        Me.lblMax.Text = "Maximum Scaled"
         '
         'lblArrow
         '

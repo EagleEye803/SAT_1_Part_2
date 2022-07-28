@@ -69,6 +69,7 @@ Partial Class Form1
         Me.chkSpeci1.Size = New System.Drawing.Size(153, 22)
         Me.chkSpeci1.TabIndex = 3
         Me.chkSpeci1.Text = "Specification 1"
+        Me.tipAverage.SetToolTip(Me.chkSpeci1, "Enable Specification 1")
         Me.chkSpeci1.UseVisualStyleBackColor = True
         '
         'chkSpeci2
@@ -81,6 +82,7 @@ Partial Class Form1
         Me.chkSpeci2.Size = New System.Drawing.Size(153, 22)
         Me.chkSpeci2.TabIndex = 4
         Me.chkSpeci2.Text = "Specification 2"
+        Me.tipAverage.SetToolTip(Me.chkSpeci2, "Enable Specification 2")
         Me.chkSpeci2.UseVisualStyleBackColor = True
         '
         'txtInput

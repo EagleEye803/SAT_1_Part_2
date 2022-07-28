@@ -20,25 +20,32 @@
             ''Save Input Data
             Dim Total As Double = 0
             Dim Divisor As Integer = 0
-            For Each Number In txtInput.Text.Split(",")
-                'Type Check Number
-                Try
+            'Type Check Number
+            Try
+                For Each Number In txtInput.Text.Split(",")
                     'Add Numbers Together
                     Total += Number
                     Divisor += 1
-                Catch ex As Exception
-                    MsgBox("Please remove all non-numerical values (except commas) from the input box and try again!", vbCritical, "ERROR")
-                End Try
-            Next
-            'Average Input Data
-            Dim Average As Double = Total / Divisor
-            'Retrieve Relative Path
-            Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-            Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
-            Dim ProjectFolderPath(UBound(ProjectPath) - 2)
-            Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
-            'Testing Line: MsgBox(Join(ProjectFolderPath, "\"), vbOK, "Testing Output!")
-            MsgBox($"Your average is: {Average}")
+                Next
+                'Average Input Data
+                Dim Average As Double = Total / Divisor
+                'Retrieve Relative Path
+                Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
+                Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
+                Dim ProjectFolderPath(UBound(ProjectPath) - 2)
+                Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+                ''OUTPUT:
+                MsgBox($"Your average is: {Average}")
+                Dim ProcessPath = Join(ProjectFolderPath, "\") + $"output.csv"
+                Dim CSVsave = MsgBox($"Save to file {ProcessPath}?", vbYesNo, "Save to CSV?")
+                If CSVsave = MsgBoxResult.Yes Then
+                    My.Computer.FileSystem.WriteAllText(ProcessPath, $"Average, {Average},{vbNewLine}", True)
+                Else
+                    MsgBox("Alright then.")
+                End If
+            Catch ex As Exception
+                MsgBox("Please remove all non-numerical values (except commas) from the input box and try again!", vbCritical, "ERROR")
+            End Try
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
         End If
