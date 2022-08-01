@@ -1,5 +1,15 @@
 ﻿Public Class Scaling
     Dim Clicked As Boolean = False
+    Dim ProjectFolderPath()
+
+    Function RelativePath()
+        'Retrieve Relative Path
+        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
+        Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
+        ReDim ProjectFolderPath(UBound(ProjectPath) - 2)
+        Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+    End Function
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtInput.ForeColor = Color.LightGray
@@ -34,11 +44,17 @@
                         End If
                     Next
                     Dim Factor = highestPossible / currentHighest
+                    ''Calculate Scaled Number Set
+                    Dim Entry(txtInput.Text.Split(",").Length)
+                    Dim cellTicker = 0
+                    For Each Number In txtInput.Text.Split(",")
+                        Entry(cellTicker) = Number * Factor
+                    Next
+                    'Write Info to CSV
+                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", (Join(ProjectFolderPath, "\") & "Scaled.csv"), True)
                 ElseIf chkDirectFactor.Checked Then
                     Dim Factor = nudMax.Value / nudMin.Value
                 End If
-                ''Calculate Scaled Number Set
-
             Catch ex As Exception
                 MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
             End Try

@@ -1,6 +1,16 @@
 ﻿Public Class Form1
     Dim Clicked As Boolean = False
 
+    Dim ProjectFolderPath()
+
+    Function RelativePath()
+        'Retrieve Relative Path
+        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
+        Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
+        ReDim ProjectFolderPath(UBound(ProjectPath) - 2)
+        Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+    End Function
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtInput.ForeColor = Color.LightGray
         txtInput.Text = "e.g. 12, 3.4, 567..."
@@ -29,11 +39,12 @@
                 Next
                 'Average Input Data
                 Dim Average As Double = Total / Divisor
-                'Retrieve Relative Path
-                Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-                Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
-                Dim ProjectFolderPath(UBound(ProjectPath) - 2)
-                Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+                ''Retrieve Relative Path
+                'Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
+                'Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
+                'Dim ProjectFolderPath(UBound(ProjectPath) - 2)
+                'Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+                RelativePath()
                 ''OUTPUT:
                 MsgBox($"Your average is: {Average}")
                 Dim ProcessPath = Join(ProjectFolderPath, "\") + $"output.csv"
