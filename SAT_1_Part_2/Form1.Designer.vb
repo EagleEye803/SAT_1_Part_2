@@ -51,7 +51,7 @@ Partial Class Form1
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button1.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Black
-        Me.Button1.Location = New System.Drawing.Point(792, 116)
+        Me.Button1.Location = New System.Drawing.Point(684, 116)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(159, 93)
         Me.Button1.TabIndex = 1
@@ -63,27 +63,31 @@ Partial Class Form1
         '
         Me.chkSpeci1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.chkSpeci1.AutoSize = True
+        Me.chkSpeci1.Enabled = False
         Me.chkSpeci1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSpeci1.Location = New System.Drawing.Point(578, 133)
+        Me.chkSpeci1.Location = New System.Drawing.Point(316, 147)
         Me.chkSpeci1.Name = "chkSpeci1"
         Me.chkSpeci1.Size = New System.Drawing.Size(153, 22)
         Me.chkSpeci1.TabIndex = 3
         Me.chkSpeci1.Text = "Specification 1"
         Me.tipAverage.SetToolTip(Me.chkSpeci1, "Enable Specification 1")
         Me.chkSpeci1.UseVisualStyleBackColor = True
+        Me.chkSpeci1.Visible = False
         '
         'chkSpeci2
         '
         Me.chkSpeci2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.chkSpeci2.AutoSize = True
+        Me.chkSpeci2.Enabled = False
         Me.chkSpeci2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSpeci2.Location = New System.Drawing.Point(578, 173)
+        Me.chkSpeci2.Location = New System.Drawing.Point(316, 187)
         Me.chkSpeci2.Name = "chkSpeci2"
         Me.chkSpeci2.Size = New System.Drawing.Size(153, 22)
         Me.chkSpeci2.TabIndex = 4
         Me.chkSpeci2.Text = "Specification 2"
         Me.tipAverage.SetToolTip(Me.chkSpeci2, "Enable Specification 2")
         Me.chkSpeci2.UseVisualStyleBackColor = True
+        Me.chkSpeci2.Visible = False
         '
         'txtInput
         '
@@ -103,7 +107,7 @@ Partial Class Form1
         Me.lblInput.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.lblInput.AutoSize = True
         Me.lblInput.Font = New System.Drawing.Font("Verdana", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInput.Location = New System.Drawing.Point(671, 250)
+        Me.lblInput.Location = New System.Drawing.Point(674, 232)
         Me.lblInput.Name = "lblInput"
         Me.lblInput.Size = New System.Drawing.Size(180, 20)
         Me.lblInput.TabIndex = 6
