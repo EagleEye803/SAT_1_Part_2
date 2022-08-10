@@ -22,6 +22,7 @@ Partial Class Processing
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.btnCalculate = New System.Windows.Forms.Button()
         Me.chklstSelection = New System.Windows.Forms.CheckedListBox()
@@ -30,6 +31,7 @@ Partial Class Processing
         Me.lblInput = New System.Windows.Forms.Label()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.lblFilePicked = New System.Windows.Forms.Label()
+        Me.tipProcessing = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'btnHome
@@ -158,4 +160,5 @@ Partial Class Processing
     Friend WithEvents lblInput As Label
     Friend WithEvents btnBrowse As Button
     Friend WithEvents lblFilePicked As Label
+    Friend WithEvents tipProcessing As ToolTip
 End Class
