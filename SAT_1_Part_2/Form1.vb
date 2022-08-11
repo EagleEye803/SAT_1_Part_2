@@ -1,23 +1,25 @@
 ﻿Public Class Form1
     Dim Clicked As Boolean = False
-
     Dim ProjectFolderPath()
 
     Function RelativePath()
         'Retrieve Relative Path
         Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-        Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
+        'Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
         ReDim ProjectFolderPath(UBound(ProjectPath) - 2)
         Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Add Prompt Text to Text Box
         txtInput.ForeColor = Color.LightGray
         txtInput.Text = "e.g. 12, 3.4, 567..."
     End Sub
 
     Private Sub txtInput_Click(sender As Object, e As EventArgs) Handles txtInput.Click
+        'Check if text box has been clicked
         If Clicked = False Then
+            'Remove Prompt Text and change color
             txtInput.ForeColor = Color.Black
             txtInput.Text = ""
             Clicked = True

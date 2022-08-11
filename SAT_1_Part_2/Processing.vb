@@ -7,7 +7,6 @@
     Function RelativePath()
         'Retrieve Relative Path
         Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-        Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
         ReDim Preserve ProjectPath(UBound(ProjectPath) - 2)
         ProjectFolderPath = Join(ProjectPath, "\")
     End Function
