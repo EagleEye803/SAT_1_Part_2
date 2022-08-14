@@ -1,4 +1,5 @@
 ﻿Public Class Processing
+    'Define Global Variables:
     Dim Clicked As Boolean = False
     Dim ProjectFolderPath As String
     Dim FileToRead As String = ""
@@ -11,14 +12,17 @@
         ProjectFolderPath = Join(ProjectPath, "\")
     End Function
 
+    'This function reads the user's selected file and store it as useful data.
     Function ReadFile()
         Try
-            ''STORES THE CSV IN A PROGRAM-READABLE FORMAT:
+            'STORES THE CSV IN A PROGRAM-READABLE FORMAT:
             Using MyReader As New Microsoft.VisualBasic.FileIO.TextFieldParser(FileToRead)
 
+                'Set Up Indicator Variables
                 Dim cellTicker As Integer = 0
                 Dim rowTicker As Integer = 0
 
+                'Define Row Reader
                 MyReader.TextFieldType = FileIO.FieldType.Delimited
                 MyReader.SetDelimiters(",")
                 Dim row As String()
@@ -26,6 +30,7 @@
                 ''Loop Through Cells and Store Data
                 While Not MyReader.EndOfData
                     row = MyReader.ReadFields()
+                    'Loop Through Cells and Add Values to Table
                     For Each cell In row
                         bigArray(rowTicker, cellTicker) = cell
                         cellTicker += 1
@@ -34,24 +39,29 @@
                     rowTicker += 1
                 End While
             End Using
-
+            'Trigger on Error
         Catch ex As Exception
+            'Display Error Message to User
             MsgBox($"There was an error!{vbNewLine}{ex.Message}.{vbNewLine}Please try again.", vbCritical)
-            Me.Hide()
-            Form1.Show()
+            ''Return to Home Form
+            'Me.Hide()
+            'Form1.Show()
         End Try
     End Function
 
+    'This function returns and stores the average value for each row of data in the data file.
     Function AnswerAverage(maxX, maxY)
+        'Initialize Local Variables
         Dim columnTotal As Integer = 0
         Dim columnAverages(0)
         Dim entry As String = "QUESTION AVERAGES,"
         Try
-            'Loop Through
+            'Loop Through Array and Add Values to Totals
             For x = 1 To maxX
                 For y = 1 To maxY
                     columnTotal += bigArray(y, x)
                 Next
+                'Resize Specialized Array and Save Data
                 ReDim Preserve columnAverages(UBound(columnAverages) + 1)
                 columnAverages(UBound(columnAverages)) = columnTotal / (maxY - 1)
                 columnTotal = 0
@@ -64,11 +74,14 @@
             My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}Processing.CSV", vbNewLine & entry, True)
             MsgBox("Averages per Question Calculated and saved!")
         Catch ex As Exception
+            'Display Error Message
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
         End Try
     End Function
 
     Function ResponseAverage(maxX, maxY)
+
+        ''Set Up Indicator Variables
         Dim rowTotal As Integer = 0
         Dim rowAverages(0)
         Dim entry = ""
@@ -85,29 +98,38 @@
                 rowTotal = 0
             Next
 
-            rowAverages(0) = "RESULT AVERAGES"
-            entry = Join(rowAverages, ",")
+            ''Set Up Entry
+            'rowAverages(0) = "RESULT AVERAGES"
+            'entry = Join(rowAverages, ",")
 
             ''Write to CSV
-            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}Processing.CSV", vbNewLine & entry, True)
+            'My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}Processing.CSV", vbNewLine & entry, True)
+
+            'Write to CSV
+            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}Processing.CSV", $"{vbNewLine}RESULT AVERAGES,{Join(rowAverages, ",")}", True)
             MsgBox("Averages per Result Calculated and Saved!")
         Catch ex As Exception
+            'Display Error Message to User
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
         End Try
 
     End Function
 
+    'This Function Averages Data for each Row, then Scales it and Stores the Scaled Numbers.
     Function AnswerScale(maxX, maxY)
+
+        'Set Up Indicator Variables
         Dim columnTotal As Integer = 0
         Dim columnAverages(0)
         Dim entry = "SCALED QUESTION AVERAGES,"
 
         Try
-            ''Calculate Averages:
+            'Loop Through Boundaries
             For x = 1 To maxX
                 For y = 1 To maxY
                     columnTotal += bigArray(y, x)
                 Next
+                'Resize Specialized Array and Save Data
                 ReDim Preserve columnAverages(UBound(columnAverages) + 1)
                 columnAverages(UBound(columnAverages)) = columnTotal / (maxY - 1)
                 columnTotal = 0
