@@ -51,14 +51,16 @@
 
     'This function returns and stores the average value for each row of data in the data file.
     Function AnswerAverage(maxX, maxY)
-        'Initialize Local Variables
+
+        'Set Up Indicator Variables
         Dim columnTotal As Integer = 0
         Dim columnAverages(0)
         Dim entry As String = "QUESTION AVERAGES,"
         Try
-            'Loop Through Array and Add Values to Totals
+            'Loop Through Array
             For x = 1 To maxX
                 For y = 1 To maxY
+                    'Add Cell Values to Total
                     columnTotal += bigArray(y, x)
                 Next
                 'Resize Specialized Array and Save Data
@@ -79,9 +81,10 @@
         End Try
     End Function
 
+    'This function returns and stores the average value for each row of data in the data file.
     Function ResponseAverage(maxX, maxY)
 
-        ''Set Up Indicator Variables
+        'Set Up Indicator Variables
         Dim rowTotal As Integer = 0
         Dim rowAverages(0)
         Dim entry = ""
@@ -89,10 +92,10 @@
             'Loop Through Boundaries
             For y = 1 To maxY
                 For x = 1 To maxX
-                    'Add values to create a total
+                    'Add Cell Values to Total
                     rowTotal += bigArray(y, x)
                 Next
-                'Save Total to Array
+                'Resize Specialized Array and Save Data
                 ReDim Preserve rowAverages(UBound(rowAverages) + 1)
                 rowAverages(UBound(rowAverages)) = (rowTotal / (maxX - 1))
                 rowTotal = 0
@@ -163,7 +166,10 @@
 
     End Function
 
+    'This Function Averages Data for each Column then Scales it and Stores the Scaled Numbers.
     Function ResponseScale(maxX, maxY)
+
+        'Set Up Indicator Variables
         Dim rowTotal As Integer = 0
         Dim rowAverages(0)
         Dim entry = "SCALED RESULT AVERAGES"
@@ -183,12 +189,12 @@
             Dim highestPossible As Integer
             highestPossible = InputBox("Please enter the highest possible result to scale to (e.g. 10)")
 
-            ''Calculate Scale
+            'Calculate Scale
             For i = 1 To UBound(rowAverages)
                 entry += (rowAverages(i) * (highestPossible / currentHighest)) & ","
             Next
 
-            ''Write to CSV
+            'Write to CSV
             My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}Processing.CSV", vbNewLine & entry, True)
             MsgBox("Scaled Averages per Result Calculated and Saved!")
         Catch ex As Exception

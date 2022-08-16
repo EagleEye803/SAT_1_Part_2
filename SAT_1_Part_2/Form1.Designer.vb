@@ -32,6 +32,7 @@ Partial Class Form1
         Me.btnScaling = New System.Windows.Forms.Button()
         Me.btnProcessing = New System.Windows.Forms.Button()
         Me.tipAverage = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -139,6 +140,19 @@ Partial Class Form1
         Me.tipAverage.SetToolTip(Me.btnProcessing, "Navigate to Processing Program")
         Me.btnProcessing.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Button2.ForeColor = System.Drawing.Color.DimGray
+        Me.Button2.Location = New System.Drawing.Point(1041, 358)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(112, 84)
+        Me.Button2.TabIndex = 9
+        Me.Button2.Tag = ""
+        Me.Button2.Text = "OPEN SYSTEM FILE..."
+        Me.tipAverage.SetToolTip(Me.Button2, "Navigate to Processing Program")
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 13.0!)
@@ -146,6 +160,7 @@ Partial Class Form1
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1549, 675)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnProcessing)
         Me.Controls.Add(Me.btnScaling)
         Me.Controls.Add(Me.lblInput)
@@ -174,4 +189,5 @@ Partial Class Form1
     Friend WithEvents btnScaling As Button
     Friend WithEvents btnProcessing As Button
     Friend WithEvents tipAverage As ToolTip
+    Friend WithEvents Button2 As Button
 End Class
