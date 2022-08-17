@@ -2,6 +2,7 @@
     Dim Clicked As Boolean = False
     Dim ProjectFolderPath()
     Dim ProjectPath As String
+    Dim bigArray(1000, 1000)
 
     Function RelativePath()
         'Retrieve Relative Path
@@ -9,6 +10,42 @@
         ReDim ProjectFolderPath(UBound(RealPath) - 2)
         Array.Copy(RealPath, ProjectFolderPath, UBound(RealPath) - 2)
         ProjectPath = Join(ProjectFolderPath, "\")
+    End Function
+
+    'This function reads the user's selected file and store it as useful data.
+    Function ReadFile()
+        'Retrieve File Data
+        RelativePath()
+        Try
+            'STORES THE CSV IN A PROGRAM-READABLE FORMAT:
+            Using MyReader As New Microsoft.VisualBasic.FileIO.TextFieldParser(ProjectPath & "output.csv")
+
+                'Set Up Indicator Variables
+                Dim cellTicker As Integer = 0
+                Dim rowTicker As Integer = 0
+
+                'Define Row Reader
+                MyReader.TextFieldType = FileIO.FieldType.Delimited
+                MyReader.SetDelimiters(",")
+                Dim row As String()
+
+                ''Loop Through Cells and Store Data
+                While Not MyReader.EndOfData
+                    row = MyReader.ReadFields()
+                    'Loop Through Cells and Add Values to Table
+                    For Each cell In row
+                        bigArray(rowTicker, cellTicker) = cell
+                        cellTicker += 1
+                    Next
+                    cellTicker = 0
+                    rowTicker += 1
+                End While
+            End Using
+            'Trigger on Error
+        Catch ex As Exception
+            'Display Error Message to User
+            MsgBox($"There was an error!{vbNewLine}{ex.Message}.{vbNewLine}Please try again.", vbCritical)
+        End Try
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -44,12 +81,12 @@
                 Dim Average As Double = Total / Divisor
 
                 RelativePath()
-                ''OUTPUT:
+                ''OUTPUT:   
                 MsgBox($"Your average is: {Average}")
                 Dim ProcessPath = ProjectPath & "Output.csv"
                 Dim CSVsave = MsgBox($"Save to file {ProcessPath}?", vbYesNo, "Save to CSV?")
                 If CSVsave = MsgBoxResult.Yes Then
-                    My.Computer.FileSystem.WriteAllText(ProcessPath, $"Average, {Average},{vbNewLine}", True)
+                    My.Computer.FileSystem.WriteAllText(ProcessPath, $"{DateTime.Now},AVERAGE,{Average},{vbNewLine}", True)
                 Else
                     MsgBox("Alright then.")
                 End If
@@ -58,6 +95,32 @@
             End Try
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
+        End If
+    End Sub
+
+    Private Sub btnFileOpen_Click(sender As Object, e As EventArgs) Handles btnFileOpen.Click
+        'Clarify Program Paths
+        RelativePath()
+        'Open Output File
+        Process.Start($"{ProjectPath}output.csv")
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        'Clarify Program Paths
+        RelativePath()
+        'Call User to Enter Search Term
+
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        'Clarify Program Paths
+        RelativePath()
+        'Double-Check Action
+        Dim CSVclear = MsgBox($"Are you sure you want to DELETE ALL CONTENTS of the file:{vbNewLine & ProjectPath}output.csv?", vbYesNo, "ARE YOU SURE?")
+        If CSVclear = MsgBoxResult.Yes Then
+            'Clear Output File
+            My.Computer.FileSystem.WriteAllText(ProjectPath & "output.csv", "", False)
+            MsgBox("Output CSV Cleared!")
         End If
     End Sub
 
@@ -71,19 +134,4 @@
         Processing.Show()
     End Sub
 
-    Private Sub btnFileOpen_Click(sender As Object, e As EventArgs) Handles btnFileOpen.Click
-        RelativePath()
-        Dim FileBrowser As New OpenFileDialog
-        FileBrowser.Title = "Open File..."
-        FileBrowser.InitialDirectory = ProjectPath
-        FileBrowser.Multiselect = False
-        FileBrowser.Filter = "All Files|*.*"
-        FileBrowser.ShowDialog()
-        If Not FileBrowser.FileName = "" Then
-            FileSystem.FileOpen(FileSystem.FreeFile(), FileBrowser.FileName, OpenMode.Input)
-        Else
-            Dim Noah As Integer = 69420
-            MsgBox($"Noah is {Noah} years old.")
-        End If
-    End Sub
 End Class

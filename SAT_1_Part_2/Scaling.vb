@@ -1,13 +1,14 @@
 ﻿Public Class Scaling
     Dim Clicked As Boolean = False
     Dim ProjectFolderPath()
+    Dim ProjectPath As String
 
     Function RelativePath()
         'Retrieve Relative Path
-        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-        Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
-        ReDim ProjectFolderPath(UBound(ProjectPath) - 2)
-        Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+        Dim RealPath = Split(My.Application.Info.DirectoryPath, "\")
+        ReDim ProjectFolderPath(UBound(RealPath) - 2)
+        Array.Copy(RealPath, ProjectFolderPath, UBound(RealPath) - 2)
+        ProjectPath = Join(ProjectFolderPath, "\")
     End Function
 
 
@@ -51,7 +52,7 @@
                         Entry(cellTicker) = Number * Factor
                     Next
                     'Write Info to CSV
-                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", (Join(ProjectFolderPath, "\") & "Scaled.csv"), True)
+                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", $"{ProjectPath}Scaled.csv", True)
                 ElseIf chkDirectFactor.Checked Then
                     Dim Factor = nudMax.Value / nudMin.Value
                 End If

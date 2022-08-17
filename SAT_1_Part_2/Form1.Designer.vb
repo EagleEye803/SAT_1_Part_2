@@ -146,12 +146,12 @@ Partial Class Form1
         '
         Me.btnFileOpen.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnFileOpen.ForeColor = System.Drawing.Color.DimGray
-        Me.btnFileOpen.Location = New System.Drawing.Point(433, 305)
+        Me.btnFileOpen.Location = New System.Drawing.Point(444, 361)
         Me.btnFileOpen.Name = "btnFileOpen"
         Me.btnFileOpen.Size = New System.Drawing.Size(112, 84)
         Me.btnFileOpen.TabIndex = 9
         Me.btnFileOpen.Tag = ""
-        Me.btnFileOpen.Text = "OPEN SYSTEM FILE..."
+        Me.btnFileOpen.Text = "VIEW FILE LOCATION"
         Me.tipAverage.SetToolTip(Me.btnFileOpen, "Opens System File Location")
         Me.btnFileOpen.UseVisualStyleBackColor = True
         '
@@ -159,7 +159,7 @@ Partial Class Form1
         '
         Me.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnClear.ForeColor = System.Drawing.Color.DimGray
-        Me.btnClear.Location = New System.Drawing.Point(433, 422)
+        Me.btnClear.Location = New System.Drawing.Point(988, 422)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(112, 84)
         Me.btnClear.TabIndex = 10
@@ -172,12 +172,12 @@ Partial Class Form1
         '
         Me.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnSearch.ForeColor = System.Drawing.Color.DimGray
-        Me.btnSearch.Location = New System.Drawing.Point(979, 392)
+        Me.btnSearch.Location = New System.Drawing.Point(988, 305)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(112, 84)
         Me.btnSearch.TabIndex = 11
         Me.btnSearch.Tag = ""
-        Me.btnSearch.Text = "SEARCH FOR KEYWORD"
+        Me.btnSearch.Text = "SEARCH SYSTEM FILE"
         Me.tipAverage.SetToolTip(Me.btnSearch, "Opens System File Location")
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -203,7 +203,7 @@ Partial Class Form1
         Me.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = " "
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
