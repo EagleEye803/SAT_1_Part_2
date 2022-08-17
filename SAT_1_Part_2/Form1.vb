@@ -1,13 +1,14 @@
 ﻿Public Class Form1
     Dim Clicked As Boolean = False
     Dim ProjectFolderPath()
+    Dim ProjectPath As String
 
     Function RelativePath()
         'Retrieve Relative Path
-        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-        'Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
-        ReDim ProjectFolderPath(UBound(ProjectPath) - 2)
-        Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+        Dim RealPath = Split(My.Application.Info.DirectoryPath, "\")
+        ReDim ProjectFolderPath(UBound(RealPath) - 2)
+        Array.Copy(RealPath, ProjectFolderPath, UBound(RealPath) - 2)
+        ProjectPath = Join(ProjectFolderPath, "\")
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -41,15 +42,11 @@
                 Next
                 'Average Input Data
                 Dim Average As Double = Total / Divisor
-                ''Retrieve Relative Path
-                'Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-                'Array.Clear(ProjectPath, UBound(ProjectPath) - 2, 3)
-                'Dim ProjectFolderPath(UBound(ProjectPath) - 2)
-                'Array.Copy(ProjectPath, ProjectFolderPath, UBound(ProjectPath) - 2)
+
                 RelativePath()
                 ''OUTPUT:
                 MsgBox($"Your average is: {Average}")
-                Dim ProcessPath = Join(ProjectFolderPath, "\") + $"output.csv"
+                Dim ProcessPath = ProjectPath & "Output.csv"
                 Dim CSVsave = MsgBox($"Save to file {ProcessPath}?", vbYesNo, "Save to CSV?")
                 If CSVsave = MsgBoxResult.Yes Then
                     My.Computer.FileSystem.WriteAllText(ProcessPath, $"Average, {Average},{vbNewLine}", True)
@@ -74,7 +71,19 @@
         Processing.Show()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+    Private Sub btnFileOpen_Click(sender As Object, e As EventArgs) Handles btnFileOpen.Click
+        RelativePath()
+        Dim FileBrowser As New OpenFileDialog
+        FileBrowser.Title = "Open File..."
+        FileBrowser.InitialDirectory = ProjectPath
+        FileBrowser.Multiselect = False
+        FileBrowser.Filter = "All Files|*.*"
+        FileBrowser.ShowDialog()
+        If Not FileBrowser.FileName = "" Then
+            FileSystem.FileOpen(FileSystem.FreeFile(), FileBrowser.FileName, OpenMode.Input)
+        Else
+            Dim Noah As Integer = 69420
+            MsgBox($"Noah is {Noah} years old.")
+        End If
     End Sub
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.lblTitle = New System.Windows.Forms.Label()
@@ -32,7 +32,9 @@ Partial Class Form1
         Me.btnScaling = New System.Windows.Forms.Button()
         Me.btnProcessing = New System.Windows.Forms.Button()
         Me.tipAverage = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnFileOpen = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.btnSearch = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblTitle
@@ -140,18 +142,44 @@ Partial Class Form1
         Me.tipAverage.SetToolTip(Me.btnProcessing, "Navigate to Processing Program")
         Me.btnProcessing.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnFileOpen
         '
-        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Button2.ForeColor = System.Drawing.Color.DimGray
-        Me.Button2.Location = New System.Drawing.Point(1041, 358)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(112, 84)
-        Me.Button2.TabIndex = 9
-        Me.Button2.Tag = ""
-        Me.Button2.Text = "OPEN SYSTEM FILE..."
-        Me.tipAverage.SetToolTip(Me.Button2, "Navigate to Processing Program")
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnFileOpen.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnFileOpen.ForeColor = System.Drawing.Color.DimGray
+        Me.btnFileOpen.Location = New System.Drawing.Point(433, 305)
+        Me.btnFileOpen.Name = "btnFileOpen"
+        Me.btnFileOpen.Size = New System.Drawing.Size(112, 84)
+        Me.btnFileOpen.TabIndex = 9
+        Me.btnFileOpen.Tag = ""
+        Me.btnFileOpen.Text = "OPEN SYSTEM FILE..."
+        Me.tipAverage.SetToolTip(Me.btnFileOpen, "Opens System File Location")
+        Me.btnFileOpen.UseVisualStyleBackColor = True
+        '
+        'btnClear
+        '
+        Me.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnClear.ForeColor = System.Drawing.Color.DimGray
+        Me.btnClear.Location = New System.Drawing.Point(433, 422)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(112, 84)
+        Me.btnClear.TabIndex = 10
+        Me.btnClear.Tag = ""
+        Me.btnClear.Text = "CLEAR SYSTEM FILES"
+        Me.tipAverage.SetToolTip(Me.btnClear, "Delete All Values from the Program Output Files")
+        Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnSearch.ForeColor = System.Drawing.Color.DimGray
+        Me.btnSearch.Location = New System.Drawing.Point(979, 392)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(112, 84)
+        Me.btnSearch.TabIndex = 11
+        Me.btnSearch.Tag = ""
+        Me.btnSearch.Text = "SEARCH FOR KEYWORD"
+        Me.tipAverage.SetToolTip(Me.btnSearch, "Opens System File Location")
+        Me.btnSearch.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -160,7 +188,9 @@ Partial Class Form1
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1549, 675)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnSearch)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnFileOpen)
         Me.Controls.Add(Me.btnProcessing)
         Me.Controls.Add(Me.btnScaling)
         Me.Controls.Add(Me.lblInput)
@@ -189,5 +219,7 @@ Partial Class Form1
     Friend WithEvents btnScaling As Button
     Friend WithEvents btnProcessing As Button
     Friend WithEvents tipAverage As ToolTip
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnFileOpen As Button
+    Friend WithEvents btnClear As Button
+    Friend WithEvents btnSearch As Button
 End Class
