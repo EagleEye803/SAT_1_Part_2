@@ -1,16 +1,13 @@
 ﻿Public Class Scaling
     Dim Clicked As Boolean = False
-    Dim ProjectFolderPath()
-    Dim ProjectPath As String
+    Dim ProjectFolderPath As String
 
     Function RelativePath()
         'Retrieve Relative Path
-        Dim RealPath = Split(My.Application.Info.DirectoryPath, "\")
-        ReDim ProjectFolderPath(UBound(RealPath) - 2)
-        Array.Copy(RealPath, ProjectFolderPath, UBound(RealPath) - 2)
-        ProjectPath = Join(ProjectFolderPath, "\")
+        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
+        ReDim Preserve ProjectPath(UBound(ProjectPath) - 2)
+        ProjectFolderPath = Join(ProjectPath, "\")
     End Function
-
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtInput.ForeColor = Color.LightGray
@@ -52,7 +49,7 @@
                         Entry(cellTicker) = Number * Factor
                     Next
                     'Write Info to CSV
-                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", $"{ProjectPath}Scaled.csv", True)
+                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", $"{ProjectFolderPath}\output.csv", True)
                 ElseIf chkDirectFactor.Checked Then
                     Dim Factor = nudMax.Value / nudMin.Value
                 End If
@@ -99,5 +96,4 @@
         lblMin.ForeColor = SystemColors.InactiveCaption
         lblMax.ForeColor = SystemColors.InactiveCaption
     End Sub
-
 End Class

@@ -70,7 +70,7 @@
             ''Save Input Data
             Dim Total As Double = 0
             Dim Divisor As Integer = 0
-            'Type Check Number
+            'Type Check Numbers:
             Try
                 For Each Number In txtInput.Text.Split(",")
                     'Add Numbers Together
@@ -98,18 +98,44 @@
         End If
     End Sub
 
+
     Private Sub btnFileOpen_Click(sender As Object, e As EventArgs) Handles btnFileOpen.Click
         'Clarify Program Paths
         RelativePath()
         'Open Output File
-        Process.Start($"{ProjectPath}output.csv")
+        Process.Start($"{ProjectPath}")
     End Sub
 
+    'This function searches the Output file for a key term.
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        'Clarify Program Paths
+        'Clarify Program Paths and Initiate Array
         RelativePath()
+        ReadFile()
         'Call User to Enter Search Term
-
+        Dim SearchTerm = InputBox("Please enter a term to search for:", "ENTER SEARCH TERM")
+        Dim Count As Integer = 0
+        Dim ResultArray(1)
+        For Each Element In bigArray
+            'Existence Check
+            If Not Element = "" Then
+                If Element.Contains(SearchTerm) Then
+                    Count += 1
+                    ResultArray(UBound(ResultArray)) = Element
+                    ReDim Preserve ResultArray(UBound(ResultArray) + 1)
+                End If
+            End If
+        Next
+        'Display Searched Results to User
+        Select Case Count
+            Case = 0
+                MsgBox("There were no results found!")
+            Case = 1
+                MsgBox($"There was 1 result found!")
+                MsgBox($"{ResultArray(1)}")
+            Case > 1
+                MsgBox($"There were {Count} results found!")
+                MsgBox($"{Join(ResultArray, vbNewLine)}")
+        End Select
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -133,5 +159,4 @@
         Me.Hide()
         Processing.Show()
     End Sub
-
 End Class
