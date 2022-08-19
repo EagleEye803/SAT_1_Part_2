@@ -67,7 +67,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Check if user has inputted data
         If Clicked = True Then
-            ''Save Input Data
+            'Save Input Data
             Dim Total As Double = 0
             Dim Divisor As Integer = 0
             'Type Check Numbers:
@@ -81,7 +81,7 @@
                 Dim Average As Double = Total / Divisor
 
                 RelativePath()
-                ''OUTPUT:   
+                'OUTPUT:   
                 MsgBox($"Your average is: {Average}")
                 Dim ProcessPath = ProjectPath & "Output.csv"
                 Dim CSVsave = MsgBox($"Save to file {ProcessPath}?", vbYesNo, "Save to CSV?")
@@ -98,7 +98,7 @@
         End If
     End Sub
 
-
+    'This Function Opens the Program Folder
     Private Sub btnFileOpen_Click(sender As Object, e As EventArgs) Handles btnFileOpen.Click
         'Clarify Program Paths
         RelativePath()
@@ -106,7 +106,7 @@
         Process.Start($"{ProjectPath}")
     End Sub
 
-    'This function searches the Output file for a key term.
+    'This Function Searches the Output File for a Key Term.
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         'Clarify Program Paths and Initiate Array
         RelativePath()

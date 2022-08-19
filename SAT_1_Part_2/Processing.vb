@@ -1,15 +1,18 @@
 ﻿Public Class Processing
     'Define Global Variables:
     Dim Clicked As Boolean = False
-    Dim ProjectFolderPath As String
+    Dim ProjectFolderPath()
+    Dim ProjectPath As String
     Dim FileToRead As String = ""
     Dim bigArray(1000, 1000)
 
     'This Function Retrieves the Relative Path of the Program
     Function RelativePath()
-        Dim ProjectPath = Split(My.Application.Info.DirectoryPath, "\")
-        ReDim Preserve ProjectPath(UBound(ProjectPath) - 2)
-        ProjectFolderPath = Join(ProjectPath, "\")
+        'Retrieve Relative Path
+        Dim RealPath = Split(My.Application.Info.DirectoryPath, "\")
+        ReDim ProjectFolderPath(UBound(RealPath) - 2)
+        Array.Copy(RealPath, ProjectFolderPath, UBound(RealPath) - 2)
+        ProjectPath = Join(ProjectFolderPath, "\")
     End Function
 
     'This Function Reads the User's Selected File and Store it as Useful Data.
@@ -66,8 +69,8 @@
 
             'Write to CSV
             RelativePath()
-            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}\output.CSV", $"{DateTime.Now},{Join(columnAverages, ",")},{vbNewLine}", True)
-            MsgBox("Averages per Question Calculated and saved!")
+            My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.CSV", $"{DateTime.Now},{Join(columnAverages, ",")},{vbNewLine}", True)
+            MsgBox("Averages per Column Calculated and saved!")
 
         Catch ex As Exception
             'Display Error Message
@@ -95,8 +98,8 @@
             Next
 
             'Write to CSV
-            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}\output.CSV", $"{DateTime.Now},{Join(rowAverages, ",")},{vbNewLine}", True)
-            MsgBox("Averages per Result Calculated and Saved!")
+            My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.CSV", $"{DateTime.Now},{Join(rowAverages, ",")},{vbNewLine}", True)
+            MsgBox("Averages per Row Calculated and Saved!")
         Catch ex As Exception
             'Display Error Message to User
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
@@ -142,8 +145,8 @@
             Next
 
             'Write to CSV
-            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}\output.csv", $"{Join(columnAverages, ",")},{vbNewLine}", True)
-            MsgBox("Scaled Averages per Question Calculated and saved!")
+            My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.csv", $"{DateTime.Now},{Join(columnAverages, ",")},{vbNewLine}", True)
+            MsgBox("Scaled Averages per Column Calculated and saved!")
 
         Catch ex As Exception
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
@@ -188,8 +191,8 @@
             Next
 
             'Write to CSV
-            My.Computer.FileSystem.WriteAllText($"{ProjectFolderPath}\output.csv", entry & vbNewLine, True)
-            MsgBox("Scaled Averages per Result Calculated and Saved!")
+            My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{ProjectPath}output.csv", entry & vbNewLine, True)
+            MsgBox("Scaled Averages per Row Calculated and Saved!")
         Catch ex As Exception
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
         End Try

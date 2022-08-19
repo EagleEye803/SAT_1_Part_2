@@ -151,8 +151,8 @@ Partial Class Form1
         Me.btnFileOpen.Size = New System.Drawing.Size(112, 84)
         Me.btnFileOpen.TabIndex = 9
         Me.btnFileOpen.Tag = ""
-        Me.btnFileOpen.Text = "VIEW FILE LOCATION"
-        Me.tipAverage.SetToolTip(Me.btnFileOpen, "Opens System File Location")
+        Me.btnFileOpen.Text = "VIEW SYSTEM FOLDER"
+        Me.tipAverage.SetToolTip(Me.btnFileOpen, "Opens System File Folder Location")
         Me.btnFileOpen.UseVisualStyleBackColor = True
         '
         'btnClear
@@ -165,7 +165,7 @@ Partial Class Form1
         Me.btnClear.TabIndex = 10
         Me.btnClear.Tag = ""
         Me.btnClear.Text = "CLEAR SYSTEM FILES"
-        Me.tipAverage.SetToolTip(Me.btnClear, "Delete All Values from the Program Output Files")
+        Me.tipAverage.SetToolTip(Me.btnClear, "Delete All Values from the Program Output")
         Me.btnClear.UseVisualStyleBackColor = True
         '
         'btnSearch
@@ -177,8 +177,8 @@ Partial Class Form1
         Me.btnSearch.Size = New System.Drawing.Size(112, 84)
         Me.btnSearch.TabIndex = 11
         Me.btnSearch.Tag = ""
-        Me.btnSearch.Text = "SEARCH SYSTEM FILE"
-        Me.tipAverage.SetToolTip(Me.btnSearch, "Opens System File Location")
+        Me.btnSearch.Text = "SEARCH OUTPUT FILE"
+        Me.tipAverage.SetToolTip(Me.btnSearch, "Check if a Specific Value is Contained in the Output File")
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'Form1
