@@ -48,12 +48,14 @@
         End Try
     End Function
 
+    'Adds Reminder Text to Input Box
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Add Prompt Text to Text Box
         txtInput.ForeColor = Color.LightGray
         txtInput.Text = "e.g. 12, 3.4, 567..."
     End Sub
 
+    'Removes Reminder Text from Input Box
     Private Sub txtInput_Click(sender As Object, e As EventArgs) Handles txtInput.Click
         'Check if text box has been clicked
         If Clicked = False Then
@@ -64,6 +66,7 @@
         End If
     End Sub
 
+    'The Primary Function: Averages Inputted Numbers
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Check if user has inputted data
         If Clicked = True Then
@@ -83,15 +86,14 @@
                 RelativePath()
                 'OUTPUT:   
                 MsgBox($"Your average is: {Average}")
-                Dim ProcessPath = ProjectPath & "Output.csv"
-                Dim CSVsave = MsgBox($"Save to file {ProcessPath}?", vbYesNo, "Save to CSV?")
+                Dim CSVsave = MsgBox($"Save to file {ProjectPath}output.csv?", vbYesNo, "Save to CSV?")
                 If CSVsave = MsgBoxResult.Yes Then
-                    My.Computer.FileSystem.WriteAllText(ProcessPath, $"{DateTime.Now},AVERAGE,{Average},{vbNewLine}", True)
+                    My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.csv", $"{DateTime.Now},AVERAGE,{Average},{vbNewLine}", True)
                 Else
                     MsgBox("Alright then.")
                 End If
             Catch ex As Exception
-                MsgBox("Please remove all non-numerical values (except commas) from the input box and try again!", vbCritical, "ERROR")
+                MsgBox($"Please remove all non-numerical values (except commas) from the input box and try again!", vbCritical, "ERROR")
             End Try
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
@@ -144,9 +146,13 @@
         'Double-Check Action
         Dim CSVclear = MsgBox($"Are you sure you want to DELETE ALL CONTENTS of the file:{vbNewLine & ProjectPath}output.csv?", vbYesNo, "ARE YOU SURE?")
         If CSVclear = MsgBoxResult.Yes Then
-            'Clear Output File
-            My.Computer.FileSystem.WriteAllText(ProjectPath & "output.csv", "", False)
-            MsgBox("Output CSV Cleared!")
+            Try
+                'Clear Output File
+                My.Computer.FileSystem.WriteAllText(ProjectPath & "output.csv", "", False)
+                MsgBox("Output CSV Cleared!")
+            Catch ex As Exception
+                MsgBox($"There was an error!{vbNewLine}{ex.Message}")
+            End Try
         End If
     End Sub
 

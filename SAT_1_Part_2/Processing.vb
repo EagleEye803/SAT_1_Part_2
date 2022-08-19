@@ -4,7 +4,7 @@
     Dim ProjectFolderPath()
     Dim ProjectPath As String
     Dim FileToRead As String = ""
-    Dim bigArray(1000, 1000)
+    Dim bigArray(1001, 1001)
 
     'This Function Retrieves the Relative Path of the Program
     Function RelativePath()
@@ -209,15 +209,25 @@
             ''CALCULATE BOUNDARIES
             Dim maxX As Integer = 0
             Dim maxY As Integer = 0
-            While Not IsNothing(bigArray(maxX, 0))
-                maxX += 1
+
+            While maxX < 1001
+                If Not IsNothing(bigArray(maxX, 0)) Then
+                    maxX += 1
+                Else
+                    Exit While
+                End If
             End While
-            While Not String.IsNullOrEmpty(bigArray(0, maxY))
-                maxY += 1
+
+            While maxY < 1001
+                If Not IsNothing(bigArray(0, maxY)) Then
+                    maxY += 1
+                Else
+                    Exit While
+                End If
             End While
 
             'Array Range Check
-            If maxX < 1000 And maxY < 1000 Then
+            If maxX < 1002 And maxY < 1002 Then
                 'Data Existence Check
                 If chklstSelection.CheckedItems Is Nothing Then
                     MsgBox("Please specify a function using the checkboxes on the left!")

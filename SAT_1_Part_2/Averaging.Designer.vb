@@ -114,12 +114,12 @@ Partial Class Averaging
         '
         Me.btnFileOpen.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnFileOpen.ForeColor = System.Drawing.Color.DimGray
-        Me.btnFileOpen.Location = New System.Drawing.Point(444, 361)
+        Me.btnFileOpen.Location = New System.Drawing.Point(1000, 423)
         Me.btnFileOpen.Name = "btnFileOpen"
         Me.btnFileOpen.Size = New System.Drawing.Size(112, 84)
         Me.btnFileOpen.TabIndex = 9
         Me.btnFileOpen.Tag = ""
-        Me.btnFileOpen.Text = "VIEW SYSTEM FOLDER"
+        Me.btnFileOpen.Text = "VIEW OUTPUT FILE FOLDER"
         Me.tipAverage.SetToolTip(Me.btnFileOpen, "Open System File Folder Location")
         Me.btnFileOpen.UseVisualStyleBackColor = True
         '
@@ -127,7 +127,7 @@ Partial Class Averaging
         '
         Me.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnClear.ForeColor = System.Drawing.Color.DimGray
-        Me.btnClear.Location = New System.Drawing.Point(988, 422)
+        Me.btnClear.Location = New System.Drawing.Point(1000, 309)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(112, 84)
         Me.btnClear.TabIndex = 10
@@ -140,7 +140,7 @@ Partial Class Averaging
         '
         Me.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnSearch.ForeColor = System.Drawing.Color.DimGray
-        Me.btnSearch.Location = New System.Drawing.Point(988, 305)
+        Me.btnSearch.Location = New System.Drawing.Point(430, 355)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(112, 84)
         Me.btnSearch.TabIndex = 11

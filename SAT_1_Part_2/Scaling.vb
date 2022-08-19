@@ -35,8 +35,10 @@
                 ''Determine Factor
                 If chkAuto.Checked Then
                     Dim currentHighest As Double = 0
+
                     'Input Highest Possible
                     Dim highestPossible = InputBox("What is the highest possible number to scale to?")
+
                     'Automatically Locate Maximum and Minimum
                     For Each Number In txtInput.Text.Split(",")
                         If Number > currentHighest Then
@@ -44,28 +46,44 @@
                         End If
                     Next
                     Dim Factor = highestPossible / currentHighest
-                    'Calculate Scaled Number Set
-                    Dim Entry(txtInput.Text.Split(",").Length)
-                    Dim cellTicker = 0
-                    For Each Number In txtInput.Text.Split(",")
-                        Entry(cellTicker) = Number * Factor
-                    Next
-                    'Write Info to CSV
-                    Dim ProcessPath = ProjectPath & "output.csv"
-                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", ProcessPath, True)
+
+                    'Validity Check
+                    If Not Double.IsInfinity(Factor) Then
+                        'Calculate Scaled Number Set
+                        Dim Entry(txtInput.Text.Split(",").Length)
+                        Dim cellTicker = 0
+                        For Each Number In txtInput.Text.Split(",")
+                            Entry(cellTicker) = Number * Factor
+                            cellTicker += 1
+                        Next
+                        'Write Info to CSV
+                        My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.csv", $"{DateTime.Now},SCALE,{Join(Entry, ",")},{vbNewLine}", True)
+                        MsgBox("Scaled numbers saved to output file!")
+                    Else
+                        MsgBox("Your factor of multiplication is infinity! Please only enter values with a positive maximum.")
+                    End If
+
                 ElseIf chkDirectFactor.Checked Then
                     Dim Factor = nudMax.Value / nudMin.Value
-                    'Calculate Scaled Number Set
-                    Dim Entry(txtInput.Text.Split(",").Length)
-                    Dim cellTicker = 0
-                    For Each Number In txtInput.Text.Split(",")
-                        Entry(cellTicker) = Number * Factor
-                    Next
-                    'Write Info to CSV
-                    My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{Join(Entry, ",")}", $"{ProjectPath}output.csv", True)
+
+                    'Validity Check
+                    If Not Double.IsInfinity(Factor) Then
+                        'Calculate Scaled Number Set
+                        Dim Entry(txtInput.Text.Split(",").Length)
+                        Dim cellTicker = 0
+                        For Each Number In txtInput.Text.Split(",")
+                            Entry(cellTicker) = Number * Factor
+                            cellTicker += 1
+                        Next
+                        'Write Info to CSV
+                        My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.csv", $"{DateTime.Now},SCALE,{Join(Entry, ",")},{vbNewLine}", True)
+                        MsgBox("Scaled numbers saved to output file!")
+                    Else
+                        MsgBox("Your factor of multiplication is infinity! Please only enter values with a positive maximum.")
+                    End If
                 End If
             Catch ex As Exception
-                MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
+                MsgBox($"There was an error!{vbNewLine}{ex.Message}", vbCritical, "ERROR")
             End Try
         Else
             MsgBox("Please enter valid data before it can be processed!" & vbNewLine & "Just click the text box on the left and enter your numbers, separated by commas.", vbCritical, "ERROR")
