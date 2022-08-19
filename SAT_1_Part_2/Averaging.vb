@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class Averaging
     Dim Clicked As Boolean = False
     Dim ProjectFolderPath()
     Dim ProjectPath As String

@@ -114,6 +114,6 @@
     'Navigates to Home Form
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         Me.Hide()
-        Form1.Show()
+        Averaging.Show()
     End Sub
 End Class

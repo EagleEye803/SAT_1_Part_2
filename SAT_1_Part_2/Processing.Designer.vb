@@ -26,7 +26,6 @@ Partial Class Processing
         Me.btnHome = New System.Windows.Forms.Button()
         Me.btnCalculate = New System.Windows.Forms.Button()
         Me.chklstSelection = New System.Windows.Forms.CheckedListBox()
-        Me.txtFileToRead = New System.Windows.Forms.TextBox()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.lblInput = New System.Windows.Forms.Label()
         Me.btnBrowse = New System.Windows.Forms.Button()
@@ -71,17 +70,6 @@ Partial Class Processing
         Me.chklstSelection.Name = "chklstSelection"
         Me.chklstSelection.Size = New System.Drawing.Size(294, 72)
         Me.chklstSelection.TabIndex = 3
-        '
-        'txtFileToRead
-        '
-        Me.txtFileToRead.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.txtFileToRead.ForeColor = System.Drawing.Color.DimGray
-        Me.txtFileToRead.Location = New System.Drawing.Point(71, 611)
-        Me.txtFileToRead.Name = "txtFileToRead"
-        Me.txtFileToRead.Size = New System.Drawing.Size(215, 20)
-        Me.txtFileToRead.TabIndex = 4
-        Me.txtFileToRead.Text = "Input File Path Here..."
-        Me.txtFileToRead.Visible = False
         '
         'lblTitle
         '
@@ -139,7 +127,6 @@ Partial Class Processing
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.lblInput)
         Me.Controls.Add(Me.lblTitle)
-        Me.Controls.Add(Me.txtFileToRead)
         Me.Controls.Add(Me.chklstSelection)
         Me.Controls.Add(Me.btnCalculate)
         Me.Controls.Add(Me.btnHome)
@@ -155,7 +142,6 @@ Partial Class Processing
     Friend WithEvents btnHome As Button
     Friend WithEvents btnCalculate As Button
     Friend WithEvents chklstSelection As CheckedListBox
-    Friend WithEvents txtFileToRead As TextBox
     Friend WithEvents lblTitle As Label
     Friend WithEvents lblInput As Label
     Friend WithEvents btnBrowse As Button

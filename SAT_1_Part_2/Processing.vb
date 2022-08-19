@@ -56,14 +56,14 @@
         columnAverages(0) = "COLUMN AVERAGES"
         Try
             'Loop Through Array
-            For row = 1 To maxY
+            For row = 1 To maxY - 1
                 For cell = 1 To maxX
                     'Add Cell Values to Total
                     columnTotal += bigArray(cell, row)
                 Next
                 'Resize Specialized Array and Save Data
                 ReDim Preserve columnAverages(UBound(columnAverages) + 1)
-                columnAverages(UBound(columnAverages)) = columnTotal / (maxY - 1)
+                columnAverages(UBound(columnAverages)) = columnTotal / (maxX - 1)
                 columnTotal = 0
             Next
 
@@ -86,14 +86,14 @@
         rowAverages(0) = "ROW AVERAGES"
         Try
             'Loop Through Boundaries
-            For row = 1 To maxY
-                For cell = 1 To maxX
+            For column = 1 To maxX - 1
+                For cell = 1 To maxY
                     'Add Cell Values to Total
-                    rowTotal += bigArray(cell, row)
+                    rowTotal += bigArray(column, cell)
                 Next
                 'Resize Specialized Array and Save Data
                 ReDim Preserve rowAverages(UBound(rowAverages) + 1)
-                rowAverages(UBound(rowAverages)) = (rowTotal / (maxX - 1))
+                rowAverages(UBound(rowAverages)) = (rowTotal / (maxY - 1))
                 rowTotal = 0
             Next
 
@@ -115,14 +115,15 @@
         columnAverages(0) = "SCALED COLUMN AVERAGES"
 
         Try
-            'Loop Through Boundaries
-            For row = 1 To maxY
+            'Loop Through Array
+            For row = 1 To maxY - 1
                 For cell = 1 To maxX
+                    'Add Cell Values to Total
                     columnTotal += bigArray(cell, row)
                 Next
                 'Resize Specialized Array and Save Data
                 ReDim Preserve columnAverages(UBound(columnAverages) + 1)
-                columnAverages(UBound(columnAverages)) = columnTotal / (maxY - 1)
+                columnAverages(UBound(columnAverages)) = columnTotal / (maxX - 1)
                 columnTotal = 0
             Next
 
@@ -158,17 +159,18 @@
         'Set Up Indicator Variables
         Dim rowTotal As Integer = 0
         Dim rowAverages(0)
-        Dim entry = "SCALED ROW AVERAGES"
+        rowAverages(0) = "SCALED ROW AVERAGES"
 
         Try
             'Loop Through Boundaries
-            For row = 1 To maxY
-                For cell = 1 To maxX
-                    rowTotal += bigArray(cell, row)
+            For column = 1 To maxX - 1
+                For cell = 1 To maxY
+                    'Add Cell Values to Total
+                    rowTotal += bigArray(column, cell)
                 Next
                 'Resize Specialized Array and Save Data
                 ReDim Preserve rowAverages(UBound(rowAverages) + 1)
-                rowAverages(UBound(rowAverages)) = rowTotal / (maxY - 1)
+                rowAverages(UBound(rowAverages)) = (rowTotal / (maxY - 1))
                 rowTotal = 0
             Next
 
@@ -187,11 +189,11 @@
 
             'Calculate Scale
             For i = 1 To UBound(rowAverages)
-                entry += (rowAverages(i) * (highestPossible / currentHighest)) & ","
+                rowAverages(i) = (rowAverages(i) * (highestPossible / currentHighest))
             Next
 
             'Write to CSV
-            My.Computer.FileSystem.WriteAllText($"{DateTime.Now},{ProjectPath}output.csv", entry & vbNewLine, True)
+            My.Computer.FileSystem.WriteAllText($"{ProjectPath}output.csv", $"{DateTime.Now},{Join(rowAverages, ",")},{vbNewLine}", True)
             MsgBox("Scaled Averages per Row Calculated and Saved!")
         Catch ex As Exception
             MsgBox($"There was an error!{vbNewLine}{ex.Message}{vbNewLine}Please try again.", vbCritical)
@@ -242,14 +244,6 @@
         End If
     End Sub
 
-    'This Function Removes the Reminder Text from the Input Box.
-    Private Sub txtFileToRead_Clicked(sender As Object, e As EventArgs) Handles txtFileToRead.Click
-        If Clicked = False Then
-            txtFileToRead.Text = ""
-            txtFileToRead.ForeColor = Color.Black
-        End If
-    End Sub
-
     'This Function Opens the File Browser
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         'Initiate File Browsing
@@ -266,6 +260,6 @@
     'This Function Navigates to the Home Form
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
         Me.Hide()
-        Form1.Show()
+        Averaging.Show()
     End Sub
 End Class

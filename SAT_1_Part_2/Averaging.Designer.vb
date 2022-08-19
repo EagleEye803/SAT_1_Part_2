@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class Averaging
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -25,8 +25,6 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.chkSpeci1 = New System.Windows.Forms.CheckBox()
-        Me.chkSpeci2 = New System.Windows.Forms.CheckBox()
         Me.txtInput = New System.Windows.Forms.TextBox()
         Me.lblInput = New System.Windows.Forms.Label()
         Me.btnScaling = New System.Windows.Forms.Button()
@@ -61,36 +59,6 @@ Partial Class Form1
         Me.Button1.Text = "AVERAGE"
         Me.tipAverage.SetToolTip(Me.Button1, "Average Your Data!")
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'chkSpeci1
-        '
-        Me.chkSpeci1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.chkSpeci1.AutoSize = True
-        Me.chkSpeci1.Enabled = False
-        Me.chkSpeci1.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSpeci1.Location = New System.Drawing.Point(316, 147)
-        Me.chkSpeci1.Name = "chkSpeci1"
-        Me.chkSpeci1.Size = New System.Drawing.Size(153, 22)
-        Me.chkSpeci1.TabIndex = 3
-        Me.chkSpeci1.Text = "Specification 1"
-        Me.tipAverage.SetToolTip(Me.chkSpeci1, "Enable Specification 1")
-        Me.chkSpeci1.UseVisualStyleBackColor = True
-        Me.chkSpeci1.Visible = False
-        '
-        'chkSpeci2
-        '
-        Me.chkSpeci2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.chkSpeci2.AutoSize = True
-        Me.chkSpeci2.Enabled = False
-        Me.chkSpeci2.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkSpeci2.Location = New System.Drawing.Point(316, 187)
-        Me.chkSpeci2.Name = "chkSpeci2"
-        Me.chkSpeci2.Size = New System.Drawing.Size(153, 22)
-        Me.chkSpeci2.TabIndex = 4
-        Me.chkSpeci2.Text = "Specification 2"
-        Me.tipAverage.SetToolTip(Me.chkSpeci2, "Enable Specification 2")
-        Me.chkSpeci2.UseVisualStyleBackColor = True
-        Me.chkSpeci2.Visible = False
         '
         'txtInput
         '
@@ -152,7 +120,7 @@ Partial Class Form1
         Me.btnFileOpen.TabIndex = 9
         Me.btnFileOpen.Tag = ""
         Me.btnFileOpen.Text = "VIEW SYSTEM FOLDER"
-        Me.tipAverage.SetToolTip(Me.btnFileOpen, "Opens System File Folder Location")
+        Me.tipAverage.SetToolTip(Me.btnFileOpen, "Open System File Folder Location")
         Me.btnFileOpen.UseVisualStyleBackColor = True
         '
         'btnClear
@@ -181,7 +149,7 @@ Partial Class Form1
         Me.tipAverage.SetToolTip(Me.btnSearch, "Check if a Specific Value is Contained in the Output File")
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'Form1
+        'Averaging
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -195,15 +163,13 @@ Partial Class Form1
         Me.Controls.Add(Me.btnScaling)
         Me.Controls.Add(Me.lblInput)
         Me.Controls.Add(Me.txtInput)
-        Me.Controls.Add(Me.chkSpeci2)
-        Me.Controls.Add(Me.chkSpeci1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblTitle)
         Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Name = "Form1"
-        Me.Text = " "
+        Me.Name = "Averaging"
+        Me.Text = " Averaging program (Home Screen)"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -212,8 +178,6 @@ Partial Class Form1
 
     Friend WithEvents lblTitle As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents chkSpeci1 As CheckBox
-    Friend WithEvents chkSpeci2 As CheckBox
     Friend WithEvents txtInput As TextBox
     Friend WithEvents lblInput As Label
     Friend WithEvents btnScaling As Button
